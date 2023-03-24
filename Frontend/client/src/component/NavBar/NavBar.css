@@ -1,0 +1,16 @@
+.nav-link {
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #EE7637;
+  text-shadow: 1px 1px #000;
+}
+
+.nav-link.active {
+  color: #EE7637;
+  font-weight: 700;
+  text-shadow: 1px 1px #000;
+}

@@ -187,7 +187,7 @@ const getSingleUser = async (req, res) => {
 const getStudentById = async (req, res) => {
   try {
     const studentId = req.params.studentId;
-    const user = await User.findOne({ studentId });
+    const user = await User.findOne({ studentid:studentId });
     res.json(user);
   } catch {
     res.status(500).json("Something went wrong");

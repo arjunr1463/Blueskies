@@ -48,7 +48,7 @@ function ViewStudent() {
           <EditStudent click={handleClick} />
         </div>
       ) : (
-        <div className="flex flex-col gap-[30px] p-6">
+        <div className="text-[14px] md:text-[16px] flex flex-col gap-[30px] p-6">
           <div className="flex items-center gap-[20px]">
             <h className="font-mont font-bold text-[18px] md:text-[22px]">
               Student Profile
@@ -99,7 +99,7 @@ function ViewStudent() {
                 >
                   Email:
                 </label>
-                <span className="font-open ">{data.email}</span>
+                <span className="font-open max-w-[180px] break-all lg:max-w-[400px]">{data.email}</span>
               </div>
               <div className="flex border-b-[1px] py-[8px] md:items-center  gap-[5px]">
                 <label

@@ -92,7 +92,7 @@ function Contactus() {
           <div className="text-center flex flex-col gap-[15px]">
             <button
               type="submit"
-              className="px-4 font-mont py-2 hover:bg-gradient-to-b from-orange-500 to-orange-600 bg-[#EE7637] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="px-4 font-mont py-2 hover:bg-gradient-to-b from-orange-500 to-orange-600 bg-[#EE7637] text-white rounded-md "
             >
               Send Message
             </button>

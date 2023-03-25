@@ -58,8 +58,8 @@ function ImageUploader() {
           Gallery Image Upload
         </h>
       </div>
-      <div>
-        <div className="flex items-center mb-4">
+      <div className="">
+        <div className="flex items-center ">
           <input
             type="file"
             accept="image/*"
@@ -82,7 +82,7 @@ function ImageUploader() {
             </div>
           ) : (
             <div className="flex">
-              <span className="border-[1px] text-[#99919c] text-center rounded-l-[0.2rem] outline-none shadow-md w-[250px] flex items-center px-[10px] text-[12px] sm:text-[14px]">
+              <span className="border-[1px] text-[#99919c] text-center rounded-l-[0.2rem] outline-none shadow-md w-[220px] sm:w-[250px] flex items-center px-[10px] text-[12px] sm:text-[14px]">
                 {imageName}
               </span>
               <button

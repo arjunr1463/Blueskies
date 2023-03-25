@@ -99,7 +99,7 @@ function ViewStudent() {
                 >
                   Email:
                 </label>
-                <span className="font-open max-w-[180px] break-all lg:max-w-[400px]">{data.email}</span>
+                <span className="font-open max-w-[150px] break-all lg:max-w-[400px]">{data.email}</span>
               </div>
               <div className="flex border-b-[1px] py-[8px] md:items-center  gap-[5px]">
                 <label
@@ -108,7 +108,7 @@ function ViewStudent() {
                 >
                   Address:
                 </label>
-                <span className="max-w-[180px] break-all lg:max-w-[400px] font-open">
+                <span className="max-w-[150px] break-all lg:max-w-[400px] font-open">
                   {data.address}
                 </span>
               </div>

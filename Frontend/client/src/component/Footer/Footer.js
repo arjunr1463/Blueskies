@@ -15,14 +15,11 @@ import axios from "axios";
 
 function Footer() {
   const [success, setSuccess] = useState("");
-  const [action, setAction] = useState(false);
   const [email, setEmail] = useState("");
   const handleChange = (e) => {
     setEmail(e.target.value);
   };
-  const handleClick = () => {
-    setAction(!action);
-  };
+
   const handleSubmit = () => {
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/createnewsletter`, {
@@ -98,7 +95,11 @@ function Footer() {
             />
           </div>
           <div className="flex xsmall:flex-col mob:flex-row gap-[15px]">
-            <a href="http://www.instagram.com/theblueskiesacademy">
+            <a
+              href="http://www.instagram.com/theblueskiesacademy"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div
                 style={{
                   backgroundImage:
@@ -110,24 +111,40 @@ function Footer() {
               </div>
             </a>
 
-            <a href="http://www.facebook.com/TheBlueskiesAcademy">
+            <a
+              href="http://www.facebook.com/TheBlueskiesAcademy"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="bg-[#3B5998] text-white px-[8px] py-[8px] rounded-[3rem]">
                 <FacebookIcon style={{ fontSize: "30px" }} />
               </div>
             </a>
 
-            <a href="http://www.twitter.com/blueskiesacdmy">
+            <a
+              href="http://www.twitter.com/blueskiesacdmy"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="bg-[#1DA1F2] text-white px-[8px] py-[8px] rounded-[3rem]">
                 <TwitterIcon style={{ fontSize: "30px" }} />
               </div>
             </a>
 
-            <a href="http://www.linkedin.com/company/theblueskiesacademy">
+            <a
+              href="http://www.linkedin.com/company/theblueskiesacademy"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="bg-[#0077B5] text-white px-[8px] py-[8px] rounded-[3rem]">
                 <LinkedInIcon style={{ fontSize: "30px" }} />
               </div>
             </a>
-            <a href="https://www.youtube.com/@theblueskiesacademy">
+            <a
+              href="https://www.youtube.com/@theblueskiesacademy"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="bg-[#FF0000] text-white px-[8px] py-[8px] rounded-[3rem]">
                 <YouTubeIcon style={{ fontSize: "30px" }} />
               </div>
@@ -159,33 +176,15 @@ function Footer() {
               <div>
                 <Link to="/OurBlogs">Our Blogs</Link>
               </div>
-              <div className="relative">
-                <button onClick={handleClick}>Gallery</button>
-                {action && (
-                  <div className="absolute top-5 right-0 mt-2 py-2 w-32 bg-white rounded-lg shadow-xl z-10 animate-fade-in">
-                    <Link
-                      to="/Gallery/Photo"
-                      onClick={handleClick}
-                      className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
-                    >
-                      Photo
-                    </Link>
-                    <Link
-                      onClick={handleClick}
-                      to="/Gallery/Video"
-                      className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
-                    >
-                      Video
-                    </Link>
-                  </div>
-                )}
+              <div>
+                <Link to="/Gallery/Photo">Photo</Link>
+              </div>
+              <div>
+                <Link to="/Gallery/Video">Video</Link>
               </div>
 
               <div>
                 <Link to="/Contactus">Contact us</Link>
-              </div>
-              <div>
-                <Link to="/StudentLogin">Student Login</Link>
               </div>
             </div>
           </div>
@@ -215,7 +214,7 @@ function Footer() {
       </div>
       <div className="py-[20px] text-center font-roboto text-[13px] md:text-[14px] flex justify-end px-[50px]">
         <span>
-        Blueskies Academy © 2023 All Rights Reserved. Powered by SQUAD MIND
+          Blueskies Academy © 2023 All Rights Reserved. Powered by SQUAD MIND
         </span>
       </div>
     </div>

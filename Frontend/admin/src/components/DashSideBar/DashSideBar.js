@@ -56,7 +56,7 @@ function SideBar() {
   return (
     <>
       {action && (
-        <div className="font-mont pt-2">
+        <div className="font-mont pt-2 overflow-y-scroll">
           <div className="">
             <ul className="text-[14px] md:text-[15px] w-[245px]">
               <Link

@@ -101,7 +101,7 @@ const createDetail = async (req, res) => {
               </table>
               <p>We will get in touch with you shortly.</p>
               <p1>Best regards,</p1>
-              <p1>The Newsletter Team</p1>
+              <p1>Blueskies Academy</p1>
               <p><a href="#" class="button">Unsubscribe</a></p>
             </div>
           </body>

@@ -67,7 +67,7 @@ const createNewsletter = async (req, res) => {
                 <p>To make sure you receive our emails, please add our email address to your contact list.</p>
                 <p>If you have any questions or feedback, please don't hesitate to reply to this email.</p>
                 <p>Best regards,</p>
-                <p>The Newsletter Team</p>
+                <p>Blueskies Academy</p>
                 <p><a href="#" class="button">Unsubscribe</a></p>
               </div>
             </body>

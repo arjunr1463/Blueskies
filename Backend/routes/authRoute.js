@@ -65,6 +65,8 @@ const {
   getStudentById,
   addstudymaterial,
   getstudymaterial,
+  forgotpassword,
+  resettoken,
 } = require("../controllers/user");
 
 router.post("/Blog/createblog", upload.single("image"), createBlog);
@@ -89,6 +91,8 @@ router.post(
   upload.array('file'),
   addstudymaterial
 );
+router.post("/user/register/ForgotPassword/:id", forgotpassword);
+router.post("/user/register/resetToken/:token", resettoken);
 router.get("/user/getAllstudent", getAllUsers);
 router.get("/user/getSinglestudent", getSingleUser);
 router.get("/user/getStudymaterial/:courseType", getstudymaterial);

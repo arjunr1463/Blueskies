@@ -4,6 +4,7 @@ import Academy from "../../component/Academy/Academy";
 import ContactUs from "../../component/HomeContact/HomeContact";
 import HomeCourse from "../../component/HomeCourse/HomeCourse";
 import Scroll from "../../component/ScrollToTop/ScrollToTop";
+import Placement from "../../component/Placement/Placement";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <Scroll />
       <Banner />
       <Academy />
+      <Placement />
       <HomeCourse />
       <ContactUs />
     </div>

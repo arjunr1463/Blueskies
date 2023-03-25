@@ -19,6 +19,7 @@ import StudentFooter from "./component/Footer/StudentFooter";
 import ChangePassword from "./component/ChangePassword/ChangePassword";
 import Material from "./component/Materials/Material";
 import ForgotPassword from "./component/ForgotPassword/ForgotPassword";
+import ResetPassword from "./component/ForgotPassword/ResetPassword";
 
 //Layout
 const Layout = () => {
@@ -102,6 +103,10 @@ const router = createBrowserRouter([
       {
         path: "/forgotpassword/student",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/resetpassword/:id",
+        element: <ResetPassword />,
       },
     ],
   },

@@ -80,9 +80,20 @@ function UploadMaterial() {
             onChange={handleCourseChange}
             className="outline-none border shadow-sm rounded py-2 px-2 max-w-330 focus:shadow-outline"
           >
-            <option value="React">React JS</option>
-            <option value="Node.js">Node.js</option>
-            <option value="MongoDB">MongoDB</option>
+            <option value="">Select a course</option>
+            <option value="Passenger Ground Services">
+              Passenger Ground Services
+            </option>
+            <option value="Personality Devlopement & Communication">
+              Personality Devlopement & Communication
+            </option>
+            <option value="Professional Ethics and Code of Conduct">
+              Professional Ethics and Code of Conduct
+            </option>
+            <option value="Organizational Behaviour">
+              Organizational Behaviour
+            </option>
+            <option value="Customer Service">Customer Service</option>
           </select>
         </div>
         <div className="flex flex-col gap-5">
@@ -96,7 +107,7 @@ function UploadMaterial() {
             className="hidden"
           />
           <div className="flex gap-5">
-            <span className="border-1 text-gray-700 rounded-l-0.2rem outline-none shadow-md w-250 flex items-center px-3 text-sm">
+            <span className="border-1 text-gray-700 rounded-l-0.2rem outline-none shadow-md font-open w-250 flex items-center px-3 text-sm">
               {files.length > 0 ? `${files.length}` : "Choose files to upload"}
             </span>
             <label

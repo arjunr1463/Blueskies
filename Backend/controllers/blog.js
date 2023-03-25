@@ -36,20 +36,75 @@ const createBlog = async (req, res) => {
     const mailOptions = {
       from: process.env.Email_From,
       to: emailList.join(","),
-      subject: "New Blog Created",
+      subject: "Blueskies Academy: New Blog Created",
       html: `
-         <br/>
-          <p>We have created a new blog of ${req.body.title}.Please check it out</p>
-         <br/>
-         <br/>
-          <p>Check it Out!!!</p>
-         <br/>
-         <a href="${process.env.CLIENT_URL}/OurBlogs">${process.env.CLIENT_URL}/OurBlogs</a>
-         <p>Best regards,</p>
-         <p>Modelopedia</p>
-    `,
+        <html>
+          <head>
+            <style>
+              /* Add some style to the email */
+              body {
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                line-height: 1.5;
+                background-color: #f4f4f4;
+                padding: 20px;
+              }
+              .container {
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+              }
+              .header {
+                background-color: #EF834B;
+                color: white;
+                text-align: center;
+                padding: 20px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+              }
+              .content {
+                padding: 20px;
+              }
+              .button {
+                background-color: #EF834B;
+                color: white;
+                display: inline-block;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                margin-top: 20px;
+              }
+              .footer {
+                background-color: #f2f2f2;
+                padding: 10px;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>New Blog Created!</h1>
+              </div>
+              <div class="content">
+                <p>Hello there,</p>
+                <p>We're excited to announce that we've created a new blog titled "${req.body.title}". Check it out!</p>
+                <a href="${process.env.CLIENT_URL}/OurBlogs" class="button">View Blog</a>
+                <p>Thank you for choosing Blueskies Academy for your educational needs. We hope you enjoy the new blog!</p>
+              </div>
+              <div class="footer">
+                <p>Best regards,</p>
+                <p>The Blueskies Academy Team</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `,
     };
-
+    
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
@@ -57,7 +112,8 @@ const createBlog = async (req, res) => {
         console.log("Email sent: " + info.response);
       }
     });
-    return res.status(201).json("Blog created successfully!!!");
+    
+    return res.status(201).json("Blog created successfully!!!"); 
   } catch (error) {
     console.error(error);
     return res.status(500).json("Something went wrong");
@@ -150,19 +206,21 @@ const createComment = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) {
-      return res.status(404).json({ error: 'Blog not found' });
+      return res.status(404).json({ error: "Blog not found" });
     }
     const { name, email, comment } = req.body;
     if (!name || !email || !comment) {
-      return res.status(200).json({ message: 'Please fill all the required fields' });
+      return res
+        .status(200)
+        .json({ message: "Please fill all the required fields" });
     }
     const newComment = {
       name,
       email,
       comment,
-      website: req.body.website
+      website: req.body.website,
     };
-    const isDuplicate = blog.comments.some(comment => {
+    const isDuplicate = blog.comments.some((comment) => {
       return (
         comment.name === newComment.name &&
         comment.email === newComment.email &&
@@ -170,31 +228,30 @@ const createComment = async (req, res) => {
       );
     });
     if (isDuplicate) {
-      return res.status(400).json({ error: 'Duplicate comment' });
+      return res.status(400).json({ error: "Duplicate comment" });
     }
     blog.comments.push(newComment);
     await blog.save();
-    res.json({ message: 'Comment added successfully' });
+    res.json({ message: "Comment added successfully" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: "Server error" });
   }
-}
-
+};
 
 const getComments = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) {
-      return res.status(404).json({ error: 'Blog not found' });
+      return res.status(404).json({ error: "Blog not found" });
     }
     const comments = blog.comments;
     res.json({ comments });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: "Server error" });
   }
-}
+};
 module.exports = {
   createBlog,
   getBlog,

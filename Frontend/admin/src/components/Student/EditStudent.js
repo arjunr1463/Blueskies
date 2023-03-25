@@ -158,10 +158,12 @@ function EditStudent({ click }) {
               onChange={handleCourseChange}
               className="w-full border font-open tracking-wide border-gray-300 rounded-[0.2rem] shadow-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
-              <option value="">Select a course</option>
-              <option value="React">React</option>
-              <option value="Node.js">Node.js</option>
-              <option value="JavaScript">JavaScript</option>
+             <option value="">Select a course</option>
+              <option value="Passenger Ground Services">Passenger Ground Services</option>
+              <option value="Personality Devlopement & Communication">Personality Devlopement & Communication</option>
+              <option value="Professional Ethics and Code of Conduct">Professional Ethics and Code of Conduct</option>
+              <option value="Organizational Behaviour">Organizational Behaviour</option>
+              <option value="Customer Service">Customer Service</option>
             </select>
           </div>
 
@@ -215,7 +217,7 @@ function EditStudent({ click }) {
               htmlFor="certified"
               className="w-full  text-gray-800 font-mont"
             >
-              Certified:
+              Certified if any:
             </label>
             <input
               type="text"

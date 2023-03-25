@@ -2,6 +2,7 @@ const User = require("../models/user");
 const sharp = require("sharp");
 const nodemailer = require("nodemailer");
 const randomstring = require("randomstring");
+const crypto = require("crypto");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
 
@@ -72,6 +73,7 @@ const createUser = async (req, res) => {
     const password = randomstring.generate(6);
     user.password = password;
     user.confirmpassword = password;
+   
     await user.save();
     const transporter = nodemailer.createTransport({
       service: "Gmail",
@@ -144,7 +146,7 @@ const createUser = async (req, res) => {
               <a href="${process.env.CLIENT_URL}/StudentLogin">Join Now</a>
               <p>We look forward to seeing you on our site!</p>
               <p>Best regards,</p>
-              <p>The Our Site Team</p>
+              <p>Blueskies Academy</p>
             </div>
           </body>
         </html>
@@ -187,7 +189,7 @@ const getSingleUser = async (req, res) => {
 const getStudentById = async (req, res) => {
   try {
     const studentId = req.params.studentId;
-    const user = await User.findOne({ studentid:studentId });
+    const user = await User.findOne({ studentid: studentId });
     res.json(user);
   } catch {
     res.status(500).json("Something went wrong");
@@ -236,6 +238,165 @@ const Logout = async (req, res) => {
     });
   } catch (error) {
     res.status(400).send("Invalid Token");
+  }
+};
+
+//forgotpassword
+const forgotpassword = async (req, res) => {
+  const email = req.body.email;
+  const id = req.params.id;
+
+  if (id !== "student") {
+    return res.status(403).json({ message: "Forbidden" });
+  }
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(404).json({ message: "Email not registered" });
+  }
+
+  const token = crypto.randomBytes(20).toString("hex");
+  user.resetPasswordToken = token;
+  user.resetPasswordExpires = Date.now() + 3600000;
+
+  try {
+    await user.save();
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.Email,
+        pass: process.env.Email_Pass,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.Email_From,
+      to: email,
+      subject: "Blueskies Academy",
+      html: `
+        <html>
+        <head>
+          <style>
+            /* Add some style to the email */
+            body {
+              font-family: Arial, sans-serif;
+              font-size: 16px;
+              line-height: 1.5;
+              background-color: #f4f4f4;
+              padding: 20px;
+            }
+            .container {
+              max-width: 600px;
+              margin: 0 auto;
+              background-color: #fff;
+              border-radius: 5px;
+              box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            .header {
+              color: #333;
+              text-align: center;
+              padding: 10px;
+            }
+            .content {
+              padding: 10px;
+            }
+            .button {
+              background-color: #EF834B;
+              border: none;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 10px;
+            }
+            .footer {
+              background-color: #f2f2f2;
+              padding: 10px;
+            }
+          </style>
+        </head>
+        <body>
+        <div class="container">
+          <div class="header">
+            <h1>Reset your password</h1>
+          </div>
+          <div class="content">
+            <p>Hello ${user.name},</p>
+            <br />
+            <p>You are receiving this email because you (or someone else) has requested a password reset for your account.</p>
+            <p>Please click on the following button to reset your password:</p>
+            <a href="${process.env.CLIENT_URL}/resetpassword/${token}">
+              <button class="button">Reset password</button>
+            </a>
+            <br />
+            <p>If you did not request this, please ignore this email and your password will remain unchanged.</p>
+          </div>
+          <div class="footer">
+            <p>Best regards,</p>
+            <p>Blueskies Academy</p>
+          </div>
+          </div>
+        </body>
+        </html>
+      `,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        return res
+          .status(500)
+          .json({ message: "Failed to send reset password email" });
+      } else {
+        return res
+          .status(200)
+          .json({ message: "Password reset email sent", token: token });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: "Failed to save reset password token" });
+  }
+};
+
+//ResetToken
+const resettoken = async (req, res) => {
+  const { token } = req.params;
+  const { password, confirmpassword } = req.body;
+
+  try {
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: "Password reset token is invalid or has expired" });
+    }
+
+    user.password = password;
+    user.confirmpassword = confirmpassword;
+    if (password != confirmpassword) {
+      return res.status(200).json({ message: "Password not matched" });
+    } else {
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpires = undefined;
+      await user.save();
+      return res.status(200).json({ message: "Password reset successful" });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Failed to reset password" });
   }
 };
 
@@ -343,7 +504,6 @@ const editUser = async (req, res) => {
   }
 };
 
-
 //changepassword
 const ChangePassword = async (req, res) => {
   try {
@@ -388,7 +548,7 @@ const addstudymaterial = async (req, res) => {
       contentType: file.mimetype,
       data: file.buffer,
     }));
-      
+
     const users = await User.find({ course: courseType });
     for (const user of users) {
       for (const studyMaterial of studyMaterials) {
@@ -406,7 +566,6 @@ const addstudymaterial = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
-
 
 const getstudymaterial = async (req, res) => {
   try {
@@ -447,4 +606,6 @@ module.exports = {
   getStudentById,
   addstudymaterial,
   getstudymaterial,
+  forgotpassword,
+  resettoken,
 };

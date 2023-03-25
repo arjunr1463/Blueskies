@@ -44,8 +44,8 @@ function BlueSkiesAcademy() {
                 alt="about1"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black opacity-50"></div>
-              <div className="absolute bottom-0 left-0 p-4">
+              <div className="absolute inset-0  bg-black opacity-50"></div>
+              <div className="absolute bottom-0 left-0 p-2">
                 <div className="text-white text-lg font-semibold mb-2 text-shadow-2xl drop-shadow-2xl">
                   Airline Customer Service Skills
                 </div>
@@ -71,7 +71,7 @@ function BlueSkiesAcademy() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black opacity-50"></div>
-              <div className="absolute bottom-0 left-0 p-4">
+              <div className="absolute bottom-0 left-0 p-2">
                 <div className="text-white text-xl font-semibold mb-2 text-shadow-2xl drop-shadow-2xl">
                   Personal Development
                 </div>
@@ -96,7 +96,7 @@ function BlueSkiesAcademy() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black opacity-50"></div>
-              <div className="absolute bottom-0 left-0 p-4">
+              <div className="absolute bottom-0 left-0 p-2">
                 <div className="text-white text-xl font-semibold mb-2 text-shadow-2xl drop-shadow-2xl">
                   Our Programs
                 </div>

@@ -56,7 +56,7 @@ function Benefits() {
           {data.map((item) => (
             <motion.div
               key={item.title}
-              className="bg-white flex flex-col justify-between overflow-hidden shadow rounded-lg p-4 transform hover:scale-105 transition duration-300 ease-in-out"
+              className="bg-white flex flex-col  justify-between overflow-hidden shadow rounded-lg p-4 transform hover:scale-105 transition duration-300 ease-in-out"
               animate={{
                 rotateX: inView ? 0 : 90,
               }}
@@ -70,7 +70,7 @@ function Benefits() {
                   className="text-blue-500 text-2xl"
                 />
               </div>
-              <div className="flex flex-col gap-[10px] px-4 pb-2">
+              <div className="flex flex-col gap-[10px] sm:h-[100px] lg:h-[170px] xl:h-[150px] px-4 pb-2">
                 <div className="text-lg font-mont font-medium text-gray-900">
                   {item.title}
                 </div>

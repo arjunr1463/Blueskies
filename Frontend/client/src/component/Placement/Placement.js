@@ -8,11 +8,11 @@ function Placement() {
         <img
           src={placementImage}
           alt="Placement Cell"
-          className="w-full h-[500px] object-cover object-center"
+          className="w-full xsmall:h-[520px] mob:h-[420px] sm:h-[500px] object-cover object-center"
         />
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-gray-900 opacity-80"></div>
         <div className="absolute top-0  h-full flex flex-col gap-[10px] md:gap-[20px] lg:gap-[20px] text-center px-[10px] sm:[px-[20px] md:px-[50px] lg:px-[100px] xl:px-[150px] justify-center">
-          <h2 className="text-white text-3xl sm:text-4xl lg:text-6xl font-bold font-mont ">
+          <h2 className="text-white text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-bold font-mont ">
             Get Your Career Soaring with Our 100% Placement Assistance
           </h2>
           <p className="text-white text-md md:text-xl">

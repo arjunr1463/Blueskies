@@ -11,7 +11,7 @@ module.exports = {
       },
       screens: {
         xsmall:"0px",
-        mob:"290px",
+        mob:"310px",
         small: "600px",
       },
     },

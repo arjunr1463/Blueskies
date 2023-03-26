@@ -74,6 +74,8 @@ var userSchema = new mongoose.Schema({
   confirmpassword: {
     type: String,
   },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
   personalstatus: {
     type: String,
     default: "active",

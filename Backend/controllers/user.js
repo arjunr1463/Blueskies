@@ -250,7 +250,7 @@ const forgotpassword = async (req, res) => {
     return res.status(403).json({ message: "Forbidden" });
   }
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email:email });
 
   if (!user) {
     return res.status(404).json({ message: "Email not registered" });

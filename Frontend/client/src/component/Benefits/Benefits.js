@@ -70,19 +70,15 @@ function Benefits() {
                   className="text-blue-500 text-2xl"
                 />
               </div>
-              <div className="px-4">
+              <div className="flex flex-col gap-[10px] px-4 pb-2">
                 <div className="text-lg font-mont font-medium text-gray-900">
                   {item.title}
                 </div>
-                <div className="mt-2 text-sm font-open text-gray-500">
+                <div className=" text-sm font-open text-gray-500">
                   {item.content}
                 </div>
               </div>
-              <div className="flex justify-end mt-4">
-                <button className="text-base font-medium text-blue-600 hover:text-blue-500">
-                  Learn More
-                </button>
-              </div>
+              
             </motion.div>
           ))}
         </div>

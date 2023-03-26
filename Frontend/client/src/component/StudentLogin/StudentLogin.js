@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import model from "../../asset/Home/image7.jpg";
+import model from "../../asset/Banner/image20.jpg";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";

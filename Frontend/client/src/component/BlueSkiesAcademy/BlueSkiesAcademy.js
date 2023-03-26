@@ -1,10 +1,10 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-import image1 from "../../asset/Academy/about1.jpg";
-import image2 from "../../asset/Academy/about2.jpg";
-import image3 from "../../asset/Academy/about3.jpg";
-import image4 from "../../asset/Academy/about3.jpg";
+import image1 from "../../asset/Banner/image3.jpg";
+import image2 from "../../asset/Banner/image11.jpg";
+import image3 from "../../asset/Banner/image18.jpg";
+import image4 from "../../asset/Banner/image8.jpg";
 import Benefits from "../Benefits/Benefits";
 
 function BlueSkiesAcademy() {
@@ -121,7 +121,7 @@ function BlueSkiesAcademy() {
             animate={inView4 ? "visible" : "hidden"}
             variants={variants}
             transition={{ duration: 0.5 }}
-            className="w-full h-auto"
+            className="lg:w-[35vw] h-auto"
           >
             <img
               src={image4}

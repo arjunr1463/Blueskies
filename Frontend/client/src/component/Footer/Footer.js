@@ -177,10 +177,10 @@ function Footer() {
                 <Link to="/OurBlogs">Our Blogs</Link>
               </div>
               <div>
-                <Link to="/Gallery/Photo">Photo</Link>
+                <Link to="/Gallery/Photo">Photos</Link>
               </div>
               <div>
-                <Link to="/Gallery/Video">Video</Link>
+                <Link to="/Gallery/Video">Videos</Link>
               </div>
 
               <div>

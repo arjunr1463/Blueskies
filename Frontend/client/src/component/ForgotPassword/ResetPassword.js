@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import model from "../../asset/Home/image7.jpg";
+import model from "../../asset/Banner/image20.jpg";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Banner from "../Banner/ResetPassword";

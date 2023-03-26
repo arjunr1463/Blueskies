@@ -44,7 +44,7 @@ function HomeContact() {
 
   return (
     <div
-      className="flex flex-col gap-10 lg:flex-row bg-gradient-to-br from-[#0396fe] to-[#001742] py-20 lg:py-32 px-10 lg:px-0 items-center justify-center mb-10 lg:mb-20"
+      className="flex flex-col gap-10 lg:flex-row bg-gradient-to-br from-[#0396fe] to-[#001742] py-20 lg:py-32 px-10 lg:px-[10px] items-center justify-center mb-10 lg:mb-20"
       style={{
         clipPath: "polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0% 85%)",
       }}

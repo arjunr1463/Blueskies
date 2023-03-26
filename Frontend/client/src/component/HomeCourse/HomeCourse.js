@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import image1 from "../../asset/Home/image11.jpg";
+import image1 from "../../asset/Banner/image19.jpg";
 import image2 from "../../asset/Home/image12.jpg";
-import image3 from "../../asset/Home/image13.jpg";
+import image3 from "../../asset/Banner/image17.jpg";
 import image4 from "../../asset/Home/image14.jpg";
 import image5 from "../../asset/Home/image15.jpg";
 import { GiCommercialAirplane } from "react-icons/gi";
@@ -361,7 +361,7 @@ function HomeCourse() {
         {data.map((datas, index) => (
           <>
             <motion.div
-              className="relative h-[600px] hidden md:flex flex-col items-center"
+              className="relative h-[600px] hidden lg:flex flex-col items-center"
               animate={
                 index === 0
                   ? animation1
@@ -400,7 +400,7 @@ function HomeCourse() {
                   ? animation10
                   : ""
               }
-              className="relative h-[600px] flex flex-col md:hidden items-center"
+              className="relative h-[600px] flex flex-col lg:hidden items-center"
             >
               <span className="">{datas.image}</span>
               <motion.div className="bg-[white] shadow-md py-[20px]  flex flex-col gap-[10px] max-w-[350px] absolute top-60 text-center">

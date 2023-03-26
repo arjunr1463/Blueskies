@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import image from "../../asset/Academy/image10.jpg";
+import image from "../../asset/Banner/image1.jpg";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
@@ -37,11 +37,11 @@ function Academy() {
         <h1 className="text-3xl md:text-4xl font-bold font-mont text-blue-900 lg:hidden">
           Blue Skies Academy
         </h1>
-        <div className="px-4 md:px-0">
+        <div className="">
           <motion.img
             src={image}
             alt="Blue Skies Academy"
-            className="w-full h-auto object-cover filter contrast-120"
+            className="w-full lg:w-[35vw] h-auto object-cover filter contrast-120"
             initial={{ opacity: 0, y: 100 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
           />

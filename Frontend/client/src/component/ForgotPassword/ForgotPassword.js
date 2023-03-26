@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Banner from "../Banner/ForgotPassword";
-import model from "../../asset/Home/image7.jpg";
+import model from "../../asset/Banner/image20.jpg";
 import axios from "axios";
 import Scroll from "../ScrollToTop/ScrollToTop";
 

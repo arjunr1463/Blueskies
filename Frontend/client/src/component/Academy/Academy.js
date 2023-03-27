@@ -41,7 +41,7 @@ function Academy() {
           <motion.img
             src={image}
             alt="Blue Skies Academy"
-            className="w-full lg:w-[35vw] h-auto object-cover filter contrast-120"
+            className="w-full lg:w-[120vw] xl:w-[35vw] h-auto object-cover filter contrast-120"
             initial={{ opacity: 0, y: 100 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
           />

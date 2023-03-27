@@ -193,6 +193,10 @@ const adminBlogEdit = async (req, res) => {
         data: compressedImage,
         contentType: mimetype,
       };
+    } else {
+      // If req.file is not present, retain the existing image data
+      const existingUser = await Blog.findById(id);
+      updatedUser.image = existingUser.image;
     }
     Blog.findByIdAndUpdate(id, updatedUser, { new: true }).then((user) => {
       res.json(user);
@@ -201,6 +205,7 @@ const adminBlogEdit = async (req, res) => {
     res.json("Failed");
   }
 };
+
 
 const createComment = async (req, res) => {
   try {

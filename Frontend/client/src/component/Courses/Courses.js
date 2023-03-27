@@ -8,7 +8,7 @@ import { GiCommercialAirplane } from "react-icons/gi";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-function Courses() {
+function HomeCourse() {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -356,7 +356,15 @@ function Courses() {
     },
   ];
   return (
-    <div className="flex flex-col gap-[10px] pt-[50px] md:pt-[100px]">
+    <div className="flex flex-col gap-[10px] pt-[50px] md:pt-[20px]">
+      <div className="flex flex-col text-center">
+        <h className="text-[35px] md:text-[45px] font-mont text-[#001742] font-bold">
+          Great Courses & Class
+        </h>
+        <p className="font-mont font-bold text-[14px]">
+          We offer Diploma course in Airport Customer Service
+        </p>
+      </div>
       <div
         className="grid gap-[10px] px-[10px] md:grid-cols-2 lg:grid-cols-3 "
         ref={ref}
@@ -364,7 +372,9 @@ function Courses() {
         {data.map((datas, index) => (
           <>
             <motion.div
-              className="relative h-[600px] hidden md:flex flex-col items-center"
+              className={`relative h-[600px] hidden lg:flex flex-col items-center ${
+                index >= data.length - 2 ? `lg:hidden` : ""
+              }`}
               animate={
                 index === 0
                   ? animation1
@@ -403,7 +413,7 @@ function Courses() {
                   ? animation10
                   : ""
               }
-              className="relative h-[600px] flex flex-col md:hidden items-center"
+              className="relative h-[600px] flex flex-col lg:hidden items-center"
             >
               <span className="">{datas.image}</span>
               <motion.div className="bg-[white] shadow-md py-[20px]  flex flex-col gap-[10px] max-w-[350px] absolute top-60 text-center">
@@ -418,8 +428,87 @@ function Courses() {
           </>
         ))}
       </div>
+      <div className="hidden h-[600px] lg:flex flex-col lg:flex-row gap-[10px] lg:px-[10px] xl:px-[10px]">
+        <div className=" xl:px-[50px] flex flex-col items-center ">
+          <img src={image4} alt="" className="h-[330px] w-[900px] object-cover" />
+          <div className="bg-[white] shadow-md py-[20px]  flex flex-col gap-[10px]  text-center">
+            <span className="font-mont font-bold text-[20px] text-[#001742]">
+              Organizational Behaviour
+            </span>
+            <div className="flex flex-col gap-[5px]">
+              <div className="flex items-center gap-[10px] text-[15px] font-open px-[5px] text-left">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>
+                  Understanding or studying organizational behavior promotes
+                  high output, minimal absenteeism, and maximum turnover
+                </span>
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Dynamics of People and Organizations</span>
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Managing Demographic and Cultural Diversity</span>
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Understanding People at Work</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex xl:px-[50px] flex-col  items-center">
+          <img src={image5} alt="" className="h-[330px] w-[900px] object-cover" />
+          <div className="bg-[white] shadow-md py-[20px] w-full flex flex-col gap-[10px]  text-center">
+            <span className="font-mont font-bold text-[20px] text-[#001742]">
+              Customer Service
+            </span>
+            <div className="flex flex-col gap-[5px]">
+              <div className="flex items-center gap-[10px] text-[15px] font-open px-[5px] text-left">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Modern Perspectives on Consumer Behaviour</span>
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Customer Perception</span>
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Learning Consumer Involvement</span>
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Customer Attitude</span>
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <span>
+                  <GiCommercialAirplane />
+                </span>
+                <span>Communication and Consumer Behaviour</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Courses;
+export default HomeCourse;

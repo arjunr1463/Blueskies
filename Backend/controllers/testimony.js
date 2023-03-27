@@ -100,6 +100,9 @@ const adminTestimonyEdit = async (req, res) => {
         data: imageBuffer,
         contentType: req.file.mimetype,
       };
+    } else {
+      const existingTestimony = await Testimony.findById(id);
+      updatedUser.image = existingTestimony.image;
     }
 
     const updatedTestimony = await Testimony.findByIdAndUpdate(
@@ -114,6 +117,8 @@ const adminTestimonyEdit = async (req, res) => {
     res.status(500).json({ message: "Failed to update testimony" });
   }
 };
+
+
 
 //delete
 const adminTestimonyDelete = async (req, res) => {

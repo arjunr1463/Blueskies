@@ -344,7 +344,7 @@ function HomeCourse() {
     },
   ];
   return (
-    <div className="flex flex-col gap-[10px] pt-[50px] md:pt-0">
+    <div className="flex flex-col gap-[10px] pt-[50px] md:pt-0 ">
       <div className="flex flex-col text-center">
         <h className="text-[#0f52ba] font-mont font-bold">Our Courses</h>
         <h className="text-[35px] md:text-[45px] font-mont text-[#001742] font-bold">

@@ -30,6 +30,18 @@ function Video() {
   const FirstPostIndex = lastPostIndex - postsPerPage;
   const currentPost = filter.slice(FirstPostIndex, lastPostIndex);
 
+  const [showVideo, setShowVideo] = useState(false);
+  const [hoveredVideo, setHoveredVideo] = useState(null);
+
+  const handleVideoHover = (index) => {
+    setHoveredVideo(index);
+    setShowVideo(true);
+  };
+
+  const handleVideoLeave = () => {
+    setShowVideo(false);
+  };
+
   return (
     <div className="flex flex-col items-center gap-[30px] px-4 py-8">
       <div className="grid grid-cols-1 small:grid-cols-2 lg:grid-cols-3 gap-[30px]">
@@ -38,8 +50,21 @@ function Video() {
             key={index}
             className="relative overflow-hidden transition transform-gpu hover:scale-105 rounded-lg"
             whileHover={{ scale: 1.05 }}
+            onMouseEnter={() => handleVideoHover(index)}
+            onMouseLeave={handleVideoLeave}
           >
-            <ReactPlayer url={videoUrl.videos} width="350px" height="200px" />
+            {showVideo && hoveredVideo === index && (
+              <div className="absolute top-0 left-0 w-full h-full z-10 ">
+                <ReactPlayer
+                  url={videoUrl.videos}
+                  width="100%"
+                  height="100%"
+                  controls={true}
+                  playing={true}
+                />
+              </div>
+            )}
+            <ReactPlayer url={videoUrl.videos} width="100%" height="100%" />
           </motion.div>
         ))}
       </div>

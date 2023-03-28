@@ -166,6 +166,14 @@ export const AllStudentData = [
     width: 200,
   },
   {
+    Header: "Student ID",
+    Footer: "Student ID",
+    accessor: "studentid",
+    maxWidth: 400,
+    minWidth: 130,
+    width: 200,
+  },
+  {
     Header: "Phone",
     Footer: "Phone",
     accessor: "mobile",

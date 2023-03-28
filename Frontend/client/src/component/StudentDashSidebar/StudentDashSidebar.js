@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { RiBookOpenLine } from "react-icons/ri";
+import { TbFileCertificate } from "react-icons/tb";
 import { VscSignOut } from "react-icons/vsc";
 import axios from "axios";
 
@@ -33,6 +34,7 @@ function DashSideBar({ children }) {
         })
         .then((res) => {
           setData(res.data);
+          
         });
     };
     fetchData();
@@ -81,6 +83,7 @@ function DashSideBar({ children }) {
           </Link>
           <Link
             to={`/Material/${data.course}`}
+            
             className={
               activeTab === "Material"
                 ? "bg-gradient-to-r from-gray-700 to-gray-900  text-white flex gap-[15px] px-[20px] items-center justify-start h-[40px] border-b-[1px]"
@@ -93,7 +96,21 @@ function DashSideBar({ children }) {
             </span>
             <span>Material</span>
           </Link>
-
+          <Link
+            to="/Certificate"
+            
+            className={
+              activeTab === "certificate"
+                ? "bg-gradient-to-r from-gray-700 to-gray-900  text-white flex gap-[15px] px-[20px] items-center justify-start h-[40px] border-b-[1px]"
+                : "flex gap-[15px] px-[20px] items-center justify-start h-[40px] border-b-[1px] hover:bg-gray-900 hover:text-white hover:duration-500"
+            }
+            onClick={() => handleTabClick("certificate")}
+          >
+            <span >
+              <TbFileCertificate />
+            </span>
+            <span>Certificate</span>
+          </Link>
           <Link
             to="/Changepassword"
             className={

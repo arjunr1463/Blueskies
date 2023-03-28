@@ -26,7 +26,7 @@ function SideBar() {
           },
         })
         .then((res) => {
-          setData(res.data._id)
+          setData(res.data._id);
         });
     };
     fetchData();
@@ -128,6 +128,20 @@ function SideBar() {
                   <FiSettings />
                 </span>
                 <span>Add Material</span>
+              </Link>
+              <Link
+                to="/admin/UploadCertificate"
+                className={
+                  activeTab === "uploadcertificate"
+                    ? "bg-[black]  flex gap-[10px]  px-[35px] md:px-[40px] items-center justify-start h-[60px] text-[white] hover:text-white  "
+                    : "flex gap-[10px] text-[white] px-[35px] md:px-[40px] items-center justify-start h-[60px]  hover:bg-black hover:text-white hover:duration-500"
+                }
+                onClick={() => handleTabClick("uploadcertificate")}
+              >
+                <span>
+                  <FiSettings />
+                </span>
+                <span>Upload Certificate</span>
               </Link>
 
               <Link

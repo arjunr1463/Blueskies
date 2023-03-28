@@ -74,8 +74,29 @@ var userSchema = new mongoose.Schema({
   confirmpassword: {
     type: String,
   },
-  resetPasswordToken: String,
-  resetPasswordExpires: Date,
+  resetPasswordToken: {
+    type: String,
+  },
+  resetPasswordExpires: {
+    type: Date,
+  },
+  certificates: [
+    {
+      name: {
+        type: String,
+        required: true,
+      },
+      contentType: {
+        type: String,
+        required: true,
+      },
+      data: {
+        type: Buffer,
+        required: true,
+      },
+    },
+  ],
+
   personalstatus: {
     type: String,
     default: "active",

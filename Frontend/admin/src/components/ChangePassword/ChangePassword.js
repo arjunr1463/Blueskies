@@ -54,12 +54,12 @@ function ChangePassword() {
       <div className="w-full max-w-md">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="bg-white  mb-4"
         >
           <h2 className="text-2xl font-mont font-bold mb-4">Change Password</h2>
           <div className="mb-4">
             <label
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-mont mb-2"
               htmlFor="oldPassword"
             >
               Old Password:
@@ -74,7 +74,7 @@ function ChangePassword() {
           </div>
           <div className="mb-6">
             <label
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-mont mb-2"
               htmlFor="newPassword"
             >
               New Password:
@@ -87,9 +87,9 @@ function ChangePassword() {
               onChange={handleChange}
             />
           </div>
-          <div className="flex flex-col gap-[10px] items-center justify-center">
+          <div className="flex flex-col gap-[10px]">
             <button
-              className="bg-gradient-to-r from-gray-700 to-gray-900 text-white font-mont font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-gradient-to-r from-gray-700 to-gray-900 text-white font-mont font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Submit

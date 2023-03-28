@@ -134,7 +134,7 @@ function AllTestimony() {
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
         </div>
-        <table {...getTableProps()} className=" text-center text-[14px]">
+        <table {...getTableProps()} className=" text-center ">
           <thead className="font-mont">
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()} className="">
@@ -168,7 +168,7 @@ function AllTestimony() {
               console.log(row);
               prepareRow(row, key);
               return (
-                <tr {...row.getRowProps()} key={data.id} className="table-row">
+                <tr {...row.getRowProps()} key={data.id} className="table-row font-roboto">
                   {row.cells.map((cell) => {
                     return (
                       <td

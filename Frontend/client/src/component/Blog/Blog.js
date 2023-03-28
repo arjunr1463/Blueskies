@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Pagination from "../Pagination/Pagination";
+import { HiOutlineChevronDoubleRight } from "react-icons/hi";
 
 function Blog() {
   const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ function Blog() {
       });
   }, []);
 
-  const filter=data.sort((a, b) => {
+  const filter = data.sort((a, b) => {
     const dateA = new Date(a.createdAt);
     const dateB = new Date(b.createdAt);
     return dateB - dateA;
@@ -75,19 +76,24 @@ function Blog() {
                     }
                   )}
                 </span>
-                <Link
-                  state={{
-                    id: item._id,
-                    image: item.image,
-                    title: item.title,
-                    content: item.content,
-                    date: item.createdAt,
-                  }}
-                  to="/SingleBlog"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Read More
-                </Link>
+                <div className="w-full items-center gap-[3px] cursor-pointer flex justify-end font-mont ">
+                  <Link
+                    state={{
+                      id: item._id,
+                      image: item.image,
+                      title: item.title,
+                      content: item.content,
+                      date: item.createdAt,
+                    }}
+                    to="/SingleBlog"
+                    
+                  >
+                    Read More
+                  </Link>
+                  <span>
+                    <HiOutlineChevronDoubleRight />
+                  </span>
+                </div>
               </div>
             </div>
           </motion.div>

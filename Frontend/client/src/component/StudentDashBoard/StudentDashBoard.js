@@ -63,36 +63,36 @@ const StudentDashboard = () => {
         <motion.div  initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 1.5 }} className="flex flex-col gap-2">
-          <div className="text-md text-gray-600 flex py-2 border-b-[1px] border-t-[1px] ">
-            <span className="text-gray-600 font-bold w-[120px]">Email:</span>
-            <span className="text-gray-800">{student.email}</span>
+          <div className="mob:text-[14px] md:text-[16px] text-gray-600 flex mob:justify-between md:justify-start  py-2 border-b-[1px] border-t-[1px] ">
+            <span className="text-gray-600 font-bold md:w-[140px]">Email:</span>
+            <span className="text-gray-800 mob:w-[150px] md:w-full">{student.email}</span>
           </div>
-          <div className="text-md text-gray-600 flex py-2 border-b-[1px]">
-            <span className="text-gray-600 font-bold w-[120px]">Mobile:</span>
-            <span className="text-gray-800">{student.mobile}</span>
+          <div className="mob:text-[14px] md:text-[16px] text-gray-600 flex mob:justify-between md:justify-start py-2 border-b-[1px]">
+            <span className="text-gray-600 font-bold md:w-[140px]">Mobile:</span>
+            <span className="text-gray-800 mob:w-[150px] md:w-full ">{student.mobile}</span>
           </div>
-          <div className="text-md text-gray-600 flex py-2 border-b-[1px]">
-            <span className="text-gray-600 font-bold w-[120px]">Course:</span>
-            <span className="text-gray-800">{student.course}</span>
+          <div className="mob:text-[14px] md:text-[16px] text-gray-600 flex mob:justify-between md:justify-start py-2 border-b-[1px]">
+            <span className="text-gray-600 font-bold md:w-[140px]">Course:</span>
+            <span className="text-gray-800 mob:w-[150px] md:w-full">{student.course}</span>
           </div>
-          <div className="text-md text-gray-600 flex py-2 border-b-[1px]">
-            <span className="text-gray-600 font-bold w-[120px]">
+          <div className="mob:text-[14px] md:text-[16px] text-gray-600 flex mob:justify-between md:justify-start py-2 border-b-[1px]">
+            <span className="text-gray-600 font-bold md:w-[140px]">
               Qualification:
             </span>
-            <span className="text-gray-800">{student.qualification}</span>
+            <span className="text-gray-800 mob:w-[150px] md:w-full">{student.qualification}</span>
           </div>
 
-          <div className="text-md text-gray-600 flex  py-2 border-b-[1px]">
-            <span className="text-gray-600 font-bold w-[120px]">Address:</span>
-            <span className="text-gray-800 break-all md:break-normal max-w-[180px] md:max-w-[300px] lg:max-w-[400px]">
+          <div className="mob:text-[14px] md:text-[16px] text-gray-600 flex mob:justify-between md:justify-start  py-2 border-b-[1px]">
+            <span className="text-gray-600 font-bold md:w-[120px]">Address:</span>
+            <span className="text-gray-800  break-all md:break-normal mob:w-[150px] md:max-w-[300px] lg:max-w-[400px]">
               {student.address}
             </span>
           </div>
-          <div className="text-md text-gray-600 flex py-2 ">
-            <span className="text-gray-600 font-bold w-[120px]">
+          <div className="mob:text-[14px] md:text-[16px] text-gray-600 flex mob:justify-between md:justify-start py-2 ">
+            <span className="text-gray-600 font-bold md:w-[140px]">
               Certified:
             </span>
-            <span className="text-gray-800">{student.certified}</span>
+            <span className="text-gray-800 mob:w-[150px] md:w-full">{student.certified}</span>
           </div>
         </motion.div>
       </motion.div>

@@ -67,6 +67,10 @@ const {
   getstudymaterial,
   forgotpassword,
   resettoken,
+  addcertificate,
+  deleteStudyMaterial,
+  getCourseCertificate,
+  deleteCourseCertificate,
 } = require("../controllers/user");
 
 router.post("/Blog/createblog", upload.single("image"), createBlog);
@@ -86,20 +90,23 @@ router.post("/user/createuser", upload.single("image"), createUser);
 router.post("/user/studentlogin", Login);
 router.post("/user/studentlogout", Logout);
 router.post("/user/changepassword", ChangePassword);
-router.post(
-  "/user/addstudymaterial",
-  upload.array('file'),
-  addstudymaterial
-);
+router.post("/user/addstudymaterial", upload.array("file"), addstudymaterial);
+router.post("/user/addcertificate", upload.array("file"), addcertificate);
 router.post("/user/register/ForgotPassword/:id", forgotpassword);
 router.post("/user/register/resetToken/:token", resettoken);
 router.get("/user/getAllstudent", getAllUsers);
 router.get("/user/getSinglestudent", getSingleUser);
 router.get("/user/getStudymaterial/:courseType", getstudymaterial);
+router.get("/user/getcoursecertificate", getCourseCertificate);
 router.get("/user/getSinglestudent/admin/:studentId", getStudentById);
 router.put("/user/admin/edit/:id", upload.single("image"), editUser);
 router.delete("/user/admin/deleteuser/:id", deleteUser);
 router.delete("/user/register/stage1/deletemultiple", deletemultiple);
+router.delete("/user/studymaterial/delete/:id", deleteStudyMaterial);
+router.delete(
+  "/user/coursecertificate/delete/:id/:certificateid",
+  deleteCourseCertificate
+);
 
 //Testimony
 router.post(
@@ -118,7 +125,11 @@ router.put(
 router.delete("/Testimony/admin/delete/:id", adminTestimonyDelete);
 
 //gallery
-router.post("/Gallery/createimage", uploadmultipleimage.array("images"), createImage);
+router.post(
+  "/Gallery/createimage",
+  uploadmultipleimage.array("images"),
+  createImage
+);
 router.post("/Gallery/createvideo", createVideo);
 router.get("/Gallery/getImages", getAllImages);
 router.get("/Gallery/getVideos", getAllVideos);
@@ -136,6 +147,6 @@ router.post("/adminuser/adminLogout", adminuserLogout);
 router.post("/adminuser/changepassword", AdminChangePassword);
 router.get("/adminuser/getadminuser", getallAdmin);
 router.get("/adminuser/getsingleadmin", getSingleAdmin);
-router.delete("/adminuser/deleteadmin/:userid/:id",deleteadmin);
+router.delete("/adminuser/deleteadmin/:userid/:id", deleteadmin);
 
 module.exports = router;

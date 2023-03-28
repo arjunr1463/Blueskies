@@ -73,7 +73,7 @@ const createUser = async (req, res) => {
     const password = randomstring.generate(6);
     user.password = password;
     user.confirmpassword = password;
-   
+
     await user.save();
     const transporter = nodemailer.createTransport({
       service: "Gmail",
@@ -250,7 +250,7 @@ const forgotpassword = async (req, res) => {
     return res.status(403).json({ message: "Forbidden" });
   }
 
-  const user = await User.findOne({ email:email });
+  const user = await User.findOne({ email: email });
 
   if (!user) {
     return res.status(404).json({ message: "Email not registered" });
@@ -567,6 +567,57 @@ const addstudymaterial = async (req, res) => {
   }
 };
 
+const deleteStudyMaterial = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).send({ message: "User not found" });
+    const materialId = req.params.id;
+    const materialIndex = user.studyMaterials.findIndex(
+      (file) => file._id.toString() === materialId
+    );
+    if (materialIndex !== -1) {
+      user.studyMaterials.splice(materialIndex, 1);
+      await user.save();
+      res.status(200).json({ message: "Study material deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Study material not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+//addcertificate
+const addcertificate = async (req, res) => {
+  try {
+    const studentid = req.body.studentid;
+    const certificate = req.files.map((file) => ({
+      name: file.originalname,
+      contentType: file.mimetype,
+      data: file.buffer,
+    }));
+
+    const users = await User.find({ studentid: studentid });
+    for (const user of users) {
+      for (const studyMaterial of certificate) {
+        if (
+          !user.certificates.find((file) => file.name === studyMaterial.name)
+        ) {
+          user.certificates.push(studyMaterial);
+        }
+      }
+      await user.save();
+    }
+    res.status(200).json({ message: "Certificates uploaded successfully" });
+  } catch {
+    res.status(500).json("Something went wrong");
+  }
+};
+
 const getstudymaterial = async (req, res) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
@@ -581,12 +632,60 @@ const getstudymaterial = async (req, res) => {
 
     const materials = user.studyMaterials.map((material) => {
       return {
+        id: material._id,
         name: material.name,
         data: material.data.toString("base64"),
       };
     });
 
     res.status(200).json({ studyMaterials: materials });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+const getCourseCertificate = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).send({ message: "User not found" });
+
+    const materials = user.certificates.map((material) => {
+      return {
+        id: material._id,
+        name: material.name,
+        data: material.data.toString("base64"),
+      };
+    });
+
+    res.status(200).json({ certificates: materials });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+const deleteCourseCertificate = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findOne({ studentid: id });
+    if (!user) return res.status(404).send({ message: "User not found" });
+    const materialId = req.params.certificateid;
+    const materialIndex = user.certificates.findIndex(
+      (file) => file._id.toString() === materialId
+    );
+    if (materialIndex !== -1) {
+      user.certificates.splice(materialIndex, 1);
+      await user.save();
+      res
+        .status(200)
+        .json({ message: "Course certificate deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Certificate not found" });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong" });
@@ -606,6 +705,10 @@ module.exports = {
   getStudentById,
   addstudymaterial,
   getstudymaterial,
+  getCourseCertificate,
   forgotpassword,
   resettoken,
+  addcertificate,
+  deleteStudyMaterial,
+  deleteCourseCertificate,
 };

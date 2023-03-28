@@ -2,10 +2,12 @@ import React, { useState, useEffect, useCallback } from "react";
 import EditStudent from "./EditStudent";
 import { AiTwotoneEdit } from "react-icons/ai";
 import { useParams } from "react-router-dom";
+import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
 function ViewStudent() {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [certificate, setCertificate] = useState([]);
   const [image, setImage] = useState([]);
   const [action, setAction] = useState(false);
   const [coursestartdate, setCourseStartDate] = useState([]);
@@ -20,26 +22,42 @@ function ViewStudent() {
       )
       .then((res) => {
         setData(res.data);
+        setCertificate(res.data.certificates);
         setImage(res.data.image.data.data);
         setCourseStartDate(
-          new Date(res.data.coursestart.slice(0, 10)).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-          })
+          new Date(res.data.coursestart.slice(0, 10)).toLocaleDateString(
+            "en-US",
+            {
+              year: "numeric",
+              month: "numeric",
+              day: "numeric",
+            }
+          )
         );
-        setCourseEndDate( new Date(res.data.courseend.slice(0, 10)).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-        })
-      );
+        setCourseEndDate(
+          new Date(res.data.courseend.slice(0, 10)).toLocaleDateString(
+            "en-US",
+            {
+              year: "numeric",
+              month: "numeric",
+              day: "numeric",
+            }
+          )
+        );
       });
   }, [id]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  const handleDelete = (key) => {
+    axios
+      .delete(
+        `${process.env.REACT_APP_API_URL}/api/user/coursecertificate/delete/${id}/${key}`
+      )
+      .then(() => fetchData());
+  };
 
   return (
     <>
@@ -74,6 +92,16 @@ function ViewStudent() {
 
               <div className="flex border-b-[1px] py-[8px] md:items-center gap-[5px]">
                 <label
+                  htmlFor="studentid"
+                  className="  text-gray-800 font-mont w-[150px]"
+                >
+                  StudentId:
+                </label>
+                <span className="font-open ">{data.studentid}</span>
+              </div>
+
+              <div className="flex border-b-[1px] py-[8px] md:items-center gap-[5px]">
+                <label
                   htmlFor="course"
                   className="  text-gray-800 font-mont w-[150px]"
                 >
@@ -99,7 +127,9 @@ function ViewStudent() {
                 >
                   Email:
                 </label>
-                <span className="font-open max-w-[150px] break-all lg:max-w-[400px]">{data.email}</span>
+                <span className="font-open max-w-[150px] break-all lg:max-w-[400px]">
+                  {data.email}
+                </span>
               </div>
               <div className="flex border-b-[1px] py-[8px] md:items-center  gap-[5px]">
                 <label
@@ -192,6 +222,31 @@ function ViewStudent() {
           </div>
         </div>
       )}
+      <div className="px-6 pb-6">
+        <div className="mb-4">
+          <h2 className="font-mont font-bold text-2xl md:text-3xl text-gray-700">
+            Course Certificate
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {certificate.map((data) => (
+            <div
+              key={data.id}
+              className="bg-white shadow-md rounded-md p-4 flex items-center justify-between"
+            >
+              <h3 className="font-mont font-bold text-sm md:text-md text-gray-800">
+                {data.name}
+              </h3>
+              <span
+                className="cursor-pointer hover:text-[red]"
+                onClick={() => handleDelete(data._id)}
+              >
+                <AiFillDelete />
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }

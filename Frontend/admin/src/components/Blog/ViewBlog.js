@@ -124,7 +124,7 @@ function ViewBlog() {
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
         </div>
-        <table {...getTableProps()} className="text-[14px] text-center">
+        <table {...getTableProps()} className="text-[16px] text-center">
           <thead className="font-mont font-bold">
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()} className="">
@@ -157,7 +157,7 @@ function ViewBlog() {
             {page.map((row, key) => {
               prepareRow(row, key);
               return (
-                <tr {...row.getRowProps()} key={row.id} className="table-row">
+                <tr {...row.getRowProps()} key={row.id} className="table-row font-roboto">
                   {row.cells.map((cell) => {
                     return (
                       <td

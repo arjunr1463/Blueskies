@@ -20,6 +20,7 @@ import ChangePassword from "./component/ChangePassword/ChangePassword";
 import Material from "./component/Materials/Material";
 import ForgotPassword from "./component/ForgotPassword/ForgotPassword";
 import ResetPassword from "./component/ForgotPassword/ResetPassword";
+import Certificate from "./component/Certificate/Certificate";
 
 //Layout
 const Layout = () => {
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
       {
         path: "/Material/:id",
         element: <Material />,
+      },
+      {
+        path: "/Certificate",
+        element: <Certificate />,
       },
     ],
   },

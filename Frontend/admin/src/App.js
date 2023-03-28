@@ -19,6 +19,7 @@ import AdminUser from "./components/Adminuser/AdminUser";
 import Changepassword from "./components/ChangePassword/ChangePassword";
 import AllAdmin from "./components/AllAdmin/AllAdmin"
 import Addmaterial from "./components/AddMaterial/AddMaterial"
+import UploadCertificate from "./components/UploadCertificate/UploadCertificate"
 //Layout
 const Layout = () => {
   const [action, setAction] = useState(false);
@@ -34,7 +35,7 @@ const Layout = () => {
             <div
               className={
                 action
-                  ? "absolute top-20 md:static h-screen z-[999] bg-gray-900 "
+                  ? "absolute top-22 md:static  h-screen md:h-full z-[999] bg-gray-900 "
                   : "h-screen "
               }
             >
@@ -118,6 +119,10 @@ const router = createBrowserRouter([
       {
         path: "admin/Addmaterial",
         element: <Addmaterial/>,
+      },
+      {
+        path: "admin/UploadCertificate",
+        element: <UploadCertificate/>,
       },
     ],
   },

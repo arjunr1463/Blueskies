@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useParams } from "react-router";
 import "./Material.css";
+import { MdDelete } from "react-icons/md";
 
 function StudyMaterials() {
   const [materials, setMaterials] = useState([]);
@@ -20,7 +21,6 @@ function StudyMaterials() {
           }
         );
         setMaterials(res.data.studyMaterials);
-        console.log(res.data);
       } catch (error) {
         console.error(error);
       }
@@ -28,6 +28,37 @@ function StudyMaterials() {
 
     fetchMaterials();
   }, [id]);
+
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/user/getStudymaterial/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMaterials(res.data.studyMaterials);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleClickDelete = (key) => {
+    const token = localStorage.getItem("token");
+    axios
+      .delete(
+        `${process.env.REACT_APP_API_URL}/api/user/studymaterial/delete/${key}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => fetchData());
+  };
 
   return (
     <div className="border-[1px] bg-gray-50 h-[500px] overflow-y-scroll flex flex-col gap-[50px] font-mont pb-[50px]">
@@ -40,7 +71,7 @@ function StudyMaterials() {
           {materials.map((material, index) => (
             <motion.li
               key={index}
-              className="flex justify-between items-center gap-[15px] py-2 px-4 bg-white rounded-md shadow-md cursor-pointer hover:bg-gray-100 "
+              className="flex justify-between items-center gap-[15px] py-2 px-4 bg-white rounded-md shadow-md  hover:bg-gray-100 "
               whileTap={{ scale: 0.97 }}
               animate={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 20 }}
@@ -50,17 +81,27 @@ function StudyMaterials() {
                 boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
               }}
             >
-              <span className="text-gray-800 font-mont">{material.name}</span>
+              <span className="text-gray-800 font-mont text-sm">
+                {material.name}
+              </span>
 
-              <a
-                href={`data:${
-                  material.contentType
-                };base64,${material.data.toString("base64")}`}
-                download={material.name}
-                className="text-lg font-mont font-bold text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out"
-              >
-                Download
-              </a>
+              <div className="flex gap-[20px]  md:gap-[50px] items-center">
+                <a
+                  href={`data:${
+                    material.contentType
+                  };base64,${material.data.toString("base64")}`}
+                  download={material.name}
+                  className="text-sm md:text-lg font-mont font-bold text-blue-500 hover:text-blue-600 transition duration-300 cursor-pointer ease-in-out"
+                >
+                  Download
+                </a>
+                <span
+                  onClick={() => handleClickDelete(material.id)}
+                  className="text-[22px] cursor-pointer"
+                >
+                  <MdDelete />
+                </span>
+              </div>
             </motion.li>
           ))}
         </ul>

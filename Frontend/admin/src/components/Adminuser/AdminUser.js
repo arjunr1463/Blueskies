@@ -143,7 +143,7 @@ function AdminUser() {
                 <div className="flex flex-col">
                   <div className="flex">
                     <div className=" px-3 py-3">
-                      <FaLock className="text-blue-400 text-[20px] text-[20px]" />
+                      <FaLock className="text-blue-400 text-[20px]" />
                     </div>
                     <div className="w-full">
                       <Field

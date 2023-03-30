@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import Bg from "../../assets/image3.jpg";
 import { Link } from "react-router-dom";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 import axios from "axios";
 
 function LoginForm() {
@@ -20,8 +21,8 @@ function LoginForm() {
         })
         .then((res) => {
           localStorage.setItem("token", res.data.token);
-          navigate("admin/Dashboard")
-          console.log(res.data)
+          navigate("admin/Dashboard");
+          console.log(res.data);
         })
         .catch((error) => {
           setError(error.response.data.error);
@@ -37,19 +38,24 @@ function LoginForm() {
   };
 
   return (
-    <div className="">
+    <div className="relative h-screen overflow-hidden ">
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600"
+        style={{ mixBlendMode: "multiply" }}
+      />
       <img
         src={Bg}
         alt=""
-        className="relative h-[100vh] brightness-50 contrast-125 object-bottom w-[100vw] object-cover blur-[2px]"
+        className="absolute inset-0 object-cover w-full h-full blur-sm"
       />
-      <div className="flex justify-center w-full ">
-        <div className="w-full bg-[white] rounded-[0.2rem]  absolute  top-40 pb-[40px] pt-[20px] flex flex-col gap-[20px] items-center max-w-md">
-          <div className="items-center flex flex-col">
-            <img src={Logo} alt="" className="object-cover h-[40px]" />
-            <h1 className="text-3xl font-semibold font-fair text-center">
-              LOGIN
-            </h1>
+      <div className="absolute inset-0 bg-gray-900 opacity-75" />
+      <div className="relative z-10 flex justify-center items-center h-full  px-[10px]">
+        <div className="flex flex-col bg-gray-200 w-[300px] lg:w-[450px] shadow-md rounded-lg py-8">
+          <div className="mb-6 text-center">
+            <img src={Logo} alt="" className="h-12 mx-auto" />
+            <h2 className="text-2xl font-bold font-mont text-gray-800">
+              Login
+            </h2>
           </div>
 
           <Formik
@@ -63,32 +69,43 @@ function LoginForm() {
             onSubmit={handleLogin}
           >
             {({ isSubmitting }) => (
-              <Form className="flex flex-col w-full px-[40px] gap-[10px]">
-                <div className="">
-                  <Field
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    className="w-full border-[1px] border-gray-300 px-4 py-2 rounded-[0.2rem] focus:outline-none focus:ring focus:ring-blue-200"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="text-red-500  font-fair text-[12px]"
-                  />
+              <Form className="flex flex-col w-full px-[20px] gap-[10px]">
+                <div className="flex items-center">
+                  <div className="  px-3 py-3">
+                    <FaEnvelope className="text-blue-400 text-[20px] " />
+                  </div>
+                  <div className="w-full">
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      className="w-full border-[1px] border-gray-300 px-4 py-2 rounded-[0.2rem] focus:outline-none focus:ring focus:ring-blue-200"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="text-red-500 font-fair text-[12px]"
+                    />
+                  </div>
                 </div>
-                <div className="">
-                  <Field
-                    type="password"
-                    name="password"
-                    placeholder="Enter your Password"
-                    className="w-full border-[1px] border-gray-300 px-4 py-2 rounded-[0.2rem] focus:outline-none focus:ring focus:ring-blue-200"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="text-red-500  font-fair text-[12px]"
-                  />
+
+                <div className="flex items-center">
+                  <div className=" px-3 py-3">
+                    <FaLock className="text-blue-400 text-[20px]" />
+                  </div>
+                  <div className="w-full">
+                    <Field
+                      type="password"
+                      name="password"
+                      placeholder="Enter your Password"
+                      className="w-full border-[1px] border-gray-300 px-4 py-2 rounded-[0.2rem] focus:outline-none focus:ring focus:ring-blue-200"
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="text-red-500  font-fair text-[12px]"
+                    />
+                  </div>
                 </div>
                 {loginError && (
                   <div className="text-red-500  font-fair text-[12px]">
@@ -106,11 +123,8 @@ function LoginForm() {
                   {error}
                 </span>
                 <div className="flex justify-end pt-[20px]">
-                  <Link
-                    to="/create/adminuser"
-                    className="underline"
-                  >
-                    new admin?
+                  <Link to="/create/adminuser" className="underline font-mont">
+                    New Admin?
                   </Link>
                 </div>
               </Form>

@@ -51,8 +51,8 @@ function AdminUser() {
         className="absolute inset-0 object-cover w-full h-full blur-sm"
       />
       <div className="absolute inset-0 bg-gray-900 opacity-75" />
-      <div className="relative z-10 flex justify-center items-center h-full">
-        <div className="flex flex-col bg-gray-200 shadow-md rounded-lg p-8">
+      <div className="relative z-10 flex justify-center items-center h-full px-[10px]">
+        <div className="flex flex-col bg-gray-200 shadow-md w-[300px] lg:w-[450px] rounded-lg p-8">
           <div className="mb-6 text-center">
             <img src={Logo} alt="" className="h-12 mx-auto" />
             <h2 className="text-2xl font-bold text-gray-800">Sign Up</h2>
@@ -80,75 +80,85 @@ function AdminUser() {
                 <div className="flex flex-col">
                   <div className="flex items-center">
                     <div className="  px-3 py-3">
-                      <FaUser className="text-blue-400" />
+                      <FaUser className="text-blue-400 text-[20px]" />
                     </div>
-                    <Field
-                      type="text"
-                      name="name"
-                      placeholder="Full Name"
-                      className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
-                    />
-                  </div>
+                    <div className="w-full">
+                      <Field
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
+                      />
 
-                  <ErrorMessage
-                    name="name"
-                    component="div"
-                    className="text-red-500 mt-2 text-sm"
-                  />
+                      <ErrorMessage
+                        name="name"
+                        component="div"
+                        className="text-red-500 mt-2 text-sm"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <div className="flex">
                     <div className=" px-3 py-3">
-                      <FaEnvelope className="text-blue-400" />
+                      <FaEnvelope className="text-blue-400 text-[20px]" />
                     </div>
-                    <Field
-                      type="email"
-                      name="email"
-                      placeholder="Email"
-                      className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
-                    />
+                    <div className="w-full">
+                      <Field
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
+                      />
+
+                      <ErrorMessage
+                        name="email"
+                        component="div"
+                        className="text-red-500 mt-2 text-sm"
+                      />
+                    </div>
                   </div>
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="text-red-500 mt-2 text-sm"
-                  />
                 </div>
                 <div className="flex flex-col">
                   <div className="flex">
                     <div className=" px-3 py-3">
-                      <FaMobileAlt className="text-blue-400" />
+                      <FaMobileAlt className="text-blue-400 text-[20px] " />
                     </div>
-                    <Field
-                      type="text"
-                      name="mobile"
-                      placeholder="Mobile"
-                      className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
-                    />
+                    <div className="w-full">
+                      <Field
+                        type="text"
+                        name="mobile"
+                        placeholder="Mobile"
+                        className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
+                      />
+
+                      <ErrorMessage
+                        name="mobile"
+                        component="div"
+                        className="text-red-500 mt-2 text-sm"
+                      />
+                    </div>
                   </div>
-                  <ErrorMessage
-                    name="mobile"
-                    component="div"
-                    className="text-red-500 mt-2 text-sm"
-                  />
                 </div>
                 <div className="flex flex-col">
                   <div className="flex">
                     <div className=" px-3 py-3">
-                      <FaLock className="text-blue-400" />
+                      <FaLock className="text-blue-400 text-[20px] text-[20px]" />
                     </div>
-                    <Field
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
-                    />
+                    <div className="w-full">
+                      <Field
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        className="w-full px-4 py-3 border rounded-lg placeholder-gray-400 text-gray-700 focus:outline-none focus:shadow-outline focus:border-blue-400"
+                      />
+                      <ErrorMessage
+                        name="password"
+                        component="div"
+                        className="text-red-500 mt-2 text-sm"
+                      />
+                    </div>
                   </div>
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="text-red-500 mt-2 text-sm"
-                  />
                 </div>
                 <label
                   htmlFor="issuperadmin"
@@ -158,9 +168,11 @@ function AdminUser() {
                     type="checkbox"
                     id="issuperadmin"
                     name="issuperadmin"
-                    className="mr-2"
+                    className="mr-2 h-[15px] w-[15px]"
                   />
-                  <span className="text-[14px] font-mont text-gray-800">Super admin</span>
+                  <span className="text-[16px] font-mont font-bold text-gray-800">
+                    Super admin
+                  </span>
                 </label>
                 <div className="flex items-center gap-[5px] justify-center">
                   <button className="bg-[#60a5fa] rounded-sm text-white font-mont px-[30px] py-[5px]">
@@ -172,7 +184,7 @@ function AdminUser() {
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <Link className="underline" to="/">
+                  <Link className="underline font-mont" to="/">
                     {" "}
                     Back to Login
                   </Link>

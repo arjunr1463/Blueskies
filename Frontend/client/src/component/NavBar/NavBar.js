@@ -3,7 +3,6 @@ import { MdCall } from "react-icons/md";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import Logo from "../../asset/Logo/Logo.png";
 import Logo1 from "../../asset/Logo/Logo1.png";
 import { CgMenuRight } from "react-icons/cg";
 import Menu from "../Menu/Menu";
@@ -119,7 +118,7 @@ function NavBar() {
         <div>
           <img
             onClick={() => navigate("/")}
-            src={Logo}
+            src={Logo1}
             alt=""
             className="h-[60px] cursor-pointer"
           />

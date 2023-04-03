@@ -110,10 +110,11 @@ const TestimonialSlider = () => {
                     transition={{ duration: 0.5, delay: 0.8 }}
                     className="max-w-[400px] text-center px-[20px]  font-roboto text-gray-500"
                   >
-                    <span
+                    <h3
                       dangerouslySetInnerHTML={{
                         __html: testimonial.description,
                       }}
+                      className="break-all md:break-normal"
                       
                     />
                   </motion.p>

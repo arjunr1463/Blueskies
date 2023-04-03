@@ -60,8 +60,8 @@ function Blog() {
             />
             <div className="p-6">
               <h2 className="text-xl font-bold mb-2">{item.title}</h2>
-              <p
-                className="text-gray-700 text-base mb-4 h-[100px] overflow-hidden"
+              <h3
+                className="text-gray-700  mb-4 h-[95px] overflow-hidden"
                 dangerouslySetInnerHTML={{ __html: item.content }}
               />
 

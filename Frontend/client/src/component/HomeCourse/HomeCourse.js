@@ -7,6 +7,7 @@ import image5 from "../../asset/Home/image15.jpg";
 import { GiCommercialAirplane } from "react-icons/gi";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import InstaLive from "../InstaLive/InstaLive";
 
 function HomeCourse() {
   const { ref, inView } = useInView({
@@ -414,6 +415,9 @@ function HomeCourse() {
             </motion.div>
           </>
         ))}
+        <div>
+          <InstaLive/>
+        </div>
       </div>
     </div>
   );

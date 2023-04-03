@@ -29,20 +29,19 @@ function EditBlog() {
     toolbar: [
       ["bold", "italic", "underline", "strike"],
       ["blockquote", "code-block"],
-      [{ header: [1, 2, 3, false] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
       [{ list: "ordered" }, { list: "bullet" }],
       [{ script: "sub" }, { script: "super" }],
       [{ indent: "-1" }, { indent: "+1" }],
       [{ direction: "rtl" }],
       [{ size: ["small", false, "large", "huge"] }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ header: [1, 2, 3, 4, 5, 6] }], // modified line
       [{ color: [] }, { background: [] }],
       [{ font: [] }],
       [{ align: [] }],
       ["clean"],
       ["link", "image", "video"],
     ],
-
     clipboard: {
       matchVisual: false,
     },
@@ -56,11 +55,14 @@ function EditBlog() {
     formData.append("image", image);
     try {
       await axios
-        .put(`${process.env.REACT_APP_API_URL}/api/Blog/admin/edit/${id}`, formData)
+        .put(
+          `${process.env.REACT_APP_API_URL}/api/Blog/admin/edit/${id}`,
+          formData
+        )
         .then((res) => {
           setTitle(res.data.title);
           setDiscription(res.data.discription);
-          navigate("/admin/Blogs")
+          navigate("/admin/Blogs");
         });
     } catch (error) {
       console.error(error);

@@ -1,7 +1,8 @@
-import React from 'react'
-import Main from "../../component/Testimonial/Testimonial"
-import Banner from "../../component/Banner/Testimonial"
+import React from "react";
+import Main from "../../component/Testimonial/Testimonial";
+import Banner from "../../component/Banner/Testimonial";
 import Scroll from "../../component/ScrollToTop/ScrollToTop";
+import { Helmet } from "react-helmet";
 
 function Testimonial() {
   return (
@@ -10,11 +11,11 @@ function Testimonial() {
       <Banner />
       <Main />
     </div>
-  )
+  );
 }
 const Head = () => {
   return (
-    <head>
+    <Helmet>
       <title>
         100% Job Assurance in Airport Jobs - Blueskies Aviation Academy
       </title>
@@ -54,14 +55,14 @@ const Head = () => {
       <meta name="twitter:data1" content="admin" />
       <meta name="twitter:label2" content="Est. reading time" />
       <meta name="twitter:data2" content="5 minutes" />
-    </head>
+    </Helmet>
   );
 };
 export default function Testimonials() {
   return (
     <>
       <Head />
-      <Testimonial/>
+      <Testimonial />
     </>
   );
 }

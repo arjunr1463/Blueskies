@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "../../component/Banner/Contactus";
 import Main from "../../component/Contactus/Contactus";
 import Scroll from "../../component/ScrollToTop/ScrollToTop";
+import { Helmet } from "react-helmet";
 
 function ContactUs() {
   return (
@@ -16,7 +17,7 @@ function ContactUs() {
 
 const Head = () => {
   return (
-    <head>
+    <Helmet>
       <title>No.1 Aviation Academy in Kerala - Blueskies Aviation Academy</title>
       <meta name="google-site-verification" content="txmeuT0zvxZ4wYO7aYXndtGKctvK32_VOzrgFkKVqBo" />
       <meta name="description" content="Aviation and Hospitality  are developing tremendously. Over the year, the aviation and hospitality sectors had a large number of aviation jobs." />
@@ -35,7 +36,7 @@ const Head = () => {
       <meta name="twitter:data1" content="admin" />
       <meta name="twitter:label2" content="Est. reading time" />
       <meta name="twitter:data2" content="5 minutes" />
-    </head>
+    </Helmet>
   );
 }
 

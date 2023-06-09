@@ -22,7 +22,7 @@ import Addmaterial from "./components/AddMaterial/AddMaterial"
 import UploadCertificate from "./components/UploadCertificate/UploadCertificate"
 //Layout
 const Layout = () => {
-  const [action, setAction] = useState(false);
+  const [action, setAction] = useState(true);
   const handleClick = () => {
     setAction(!action);
   };
